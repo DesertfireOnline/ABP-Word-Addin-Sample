@@ -1,0 +1,48 @@
+<!-- Admin or author login -->
+<div *ngIf="!isIE && hasLoggedIn " class="main_content">
+  <h2 id="sideload-msg" className='ms-fontSize-su ms-fontColor-neutralPrimary'>User is logged in</h2>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
+
+<!-- Splash Screen: If the add-in is accessed in MS Word Desktop version [Not in web browser] -->
+<div *ngIf="!isIE && !hasLoggedIn && desktopVersion" class="main_content" style="text-align:center;">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <div class="container content-main">
+    <div class="center-content-container " style="margin-top: -10px;">
+      <button [disabled]="disabled" (click)="Login()" class="button primary"> Continue to Login Screen</button>
+    </div>
+  </div>
+</div>
+
+<!-- If the add-in is accessed in a web browser [Not in MS Word Desktop] -->
+<div *ngIf="!isIE && !hasLoggedIn && !desktopVersion">
+  <div style="text-align: center;  line-height: normal;padding:10px;">
+    <p>
+      PPM® Visual Documents is designed to work with Microsoft Word Desktop version
+    </p>
+
+    <p>Please open Microsoft Word on your desktop and install the add-in</p>
+
+  </div>
+
+</div>
+
+<!-- If the add-in embedded browser version is Internet Explorer -->
+<div *ngIf='isIE' class="main_content content-main" style="background-color: #ffffff;">
+  <div style="text-align: center;  line-height: normal;padding:10px;">
+    <p>
+      We’ve detected that you are using an older version of office with an unsupported browser [IE].
+    </p>
+
+    <p>Please follow these steps to install the latest supported browser: </p>
+    <p>1. Click <a target="_blank" style="color:blue;text-decoration:underline !important;"
+        href='https://developer.microsoft.com/en-us/microsoft-edge/webview2/'>here</a> to go the Microsoft Edge WebView2
+      browser page.
+    </p>
+    <p>2. Download the <b>Evergreen Bootstrapper</b> from the above page and install the file.</p>
+    <p>3. Once the installation process is completed, please close and restart Microsoft Word and open the add-in again.
+    </p>
+  </div>
+</div>
