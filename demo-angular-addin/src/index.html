@@ -1,28 +1,69 @@
-<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
-<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contoso Task Pane Add-in</title>
+  <meta charset="utf-8">
+  <title>ABP Word Addin</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-   <!-- Office JavaScript API -->
-   <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <script type="text/javascript">
+    if (history) {
+      var pushStateRef = history.pushState;
+      var replaceStateRef = history.replaceState;
+    }
+    function patch() {
+      if (history && !history.pushState) {
+        history.pushState = pushStateRef;
+        history.replaceState = replaceStateRef;
+      }
+    }
+    function onOfficejsLoad() {
+      // Internet Explorer 6-11
+      var isIE = /*@cc_on!@*/false || !!document.documentMode;
+      console.log('Add-in is running on IE');
 
-   <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
-   <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
-   <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+      Office.onReady(function () {
+        console.log('office.js is ready just added by VB.');
+        patch();
+      });
+    }
+  </script>
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"
+    onload="onOfficejsLoad();">
+    </script>
+  <script nomodule type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/html5-history-api/4.2.10/history.js">
+    </script>
 
-   <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+  <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+
+  <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
-<body class="ms-font-m ms-welcome">
-    <h2 id="sideload-msg" className='ms-fontSize-su ms-fontColor-neutralPrimary'>Add-in loaded successfully</h2>
-    <app-home></app-home>
+<body class="mat-typography">
+  <app-root>
+    <div class="loader">
+      <div id="cover-spin"></div>
+    </div>
+  </app-root>
 </body>
 
 </html>

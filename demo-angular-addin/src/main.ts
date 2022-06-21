@@ -11,7 +11,12 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-Office.initialize = reason => {
-  platformBrowserDynamic().bootstrapModule(AppModule)
-    .catch(err => console.error(err));
+Office.initialize = reason =>{
+    platformBrowserDynamic().bootstrapModule(AppModule)
+              .catch(err => console.error(err));
 };
+
+Office.onReady(() => {
+  // If needed, Office.js is ready to be called
+  console.log('commands are ready!');
+});

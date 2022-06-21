@@ -21,6 +21,7 @@
     "@angular/router": "^14.0.0",
     "@microsoft/office-js": "^1.1.74",
     "@microsoft/office-js-helpers": "^1.0.1",
+    "mammoth": "^1.4.21",
     "office-ui-fabric-js": "^1.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+  <abp-dynamic-layout></abp-dynamic-layout>`,
 })
 export class AppComponent {
-  title = 'demo-angular-addin';
 }

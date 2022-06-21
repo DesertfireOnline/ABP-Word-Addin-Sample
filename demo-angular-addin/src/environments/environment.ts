@@ -1,16 +1,27 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+import { Environment } from '@abp/ng.core';
+
+const baseUrl = 'https://localhost:4200';
+const backendUrl = 'https://localhost:44363';
 
 export const environment = {
-  production: false
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+  production: false,
+  application: {
+    baseUrl,
+    backendUrl,
+    name: 'ABPWordApp',
+  },
+  oAuthConfig: {
+    issuer: 'https://localhost:44363',
+    redirectUri: baseUrl,
+    clientId: 'ABP_Addin',
+    dummyClientSecret: '1q2w3e*',
+    responseType: 'code',
+    scope: 'offline_access ABPWordApp',
+  },
+  apis: {
+    default: {
+      url: 'https://localhost:44363',
+      rootNamespace: 'ABPWordApp',
+    },
+  },
+} as Environment;
