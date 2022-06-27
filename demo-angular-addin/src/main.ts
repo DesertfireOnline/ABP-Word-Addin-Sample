@@ -2,7 +2,8 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-declare var Office:any;
+
+declare var Office: any;
 if (environment.production) {
   enableProdMode();
 }
@@ -28,7 +29,7 @@ Office.onReady(() => {
   console.log('commands are ready!');
   if (!Office.context || !Object.keys(Office.context).length) {
     console.log('init browser');
-    initApp()
+    initApp();
   }
 
 });
