@@ -9,39 +9,23 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <script type="text/javascript">
+    var pushStateRef, replaceStateRef;
     if (history) {
-      var pushStateRef = history.pushState;
-      var replaceStateRef = history.replaceState;
-    }
-    function patch() {
-      if (history && !history.pushState) {
-        history.pushState = pushStateRef;
-        history.replaceState = replaceStateRef;
-      }
-    }
-    function onOfficejsLoad() {
-      // Internet Explorer 6-11
-      var isIE = /*@cc_on!@*/false || !!document.documentMode;
-      console.log('Add-in is running on IE');
-
-      Office.onReady(function () {
-        console.log('office.js is ready just added by VB.');
-        patch();
-      });
+      pushStateRef = history.pushState;
+      replaceStateRef = history.replaceState;
     }
   </script>
-  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"
-    onload="onOfficejsLoad();">
-    </script>
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js">
+  </script>
   <script nomodule type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/html5-history-api/4.2.10/history.js">
-    </script>
+          src="https://cdnjs.cloudflare.com/ajax/libs/html5-history-api/4.2.10/history.js">
+  </script>
 
   <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
   <link rel="stylesheet"
-    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
   <link rel="stylesheet"
-    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
 
   <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.min.css">
@@ -59,11 +43,11 @@
 </head>
 
 <body class="mat-typography">
-  <app-root>
-    <div class="loader">
-      <div id="cover-spin"></div>
-    </div>
-  </app-root>
+<app-root>
+  <div class="loader">
+    <div id="cover-spin"></div>
+  </div>
+</app-root>
 </body>
 
 </html>

@@ -10,21 +10,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { StartComponent } from './start/start.component';
 import { TemplateComponent } from './template/template.component';
+import { AppLayoutComponent } from './app-layout/app-layout.component';
+import { IeComponent } from './ie/ie.component';
+import { DesktopComponent } from './desktop/desktop.component';
 
 @NgModule({
-  declarations: [AppComponent,
+  declarations: [
+    AppComponent,
     HomeComponent,
     StartComponent,
     TemplateComponent,
+    AppLayoutComponent,
+    IeComponent,
+    DesktopComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    CoreModule.forRoot({
+      environment,
+      registerLocaleFn: registerLocale(),
+    }),
     NgxsModule.forRoot([]),
-    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
