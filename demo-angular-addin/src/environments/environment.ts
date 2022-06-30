@@ -8,7 +8,7 @@ export const environment = {
   application: {
     baseUrl,
     backendUrl,
-    name: 'ABPWordApp',
+    name: 'Ppm',
   },
   oAuthConfig: {
     issuer: 'https://localhost:44363',
@@ -16,12 +16,12 @@ export const environment = {
     clientId: 'ABP_Addin',
     dummyClientSecret: '1q2w3e*',
     responseType: 'code',
-    scope: 'offline_access ABPWordApp',
+    scope: 'offline_access Ppm',
   },
   apis: {
     default: {
       url: 'https://localhost:44363',
-      rootNamespace: 'ABPWordApp',
+      rootNamespace: 'Desertfire.Ppm',
     },
   },
 } as Environment;
